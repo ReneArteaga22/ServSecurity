@@ -18,12 +18,12 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.retrofitcuartos.R;
-import com.example.retrofitcuartos.adapters.SensorsAdapter;
-import com.example.retrofitcuartos.models.SensorList;
-import com.example.retrofitcuartos.models.Sensores;
-import com.example.retrofitcuartos.request.RequestSensors;
-import com.example.retrofitcuartos.retrofit.RetrofitClient;
+import com.example.servidores.R;
+import com.example.servidores.adapters.SensorsAdapter;
+import com.example.servidores.models.SensorList;
+import com.example.servidores.models.Sensores;
+import com.example.servidores.request.RequestSensors;
+import com.example.servidores.retrofit.RetrofitClient;
 import com.google.android.material.snackbar.Snackbar;
 
 import retrofit2.Call;
@@ -69,7 +69,7 @@ public class SensoresYAdaptadores extends AppCompatActivity {
     }
 
     private void fetchSensors(String idcuartos) {
-        RequestSensors requestSensors = RetrofitClient.getRetrofitClient().create(RequestSensors.class);
+        RequestSensors requestSensors = RetrofitClient.getInstance().create(RequestSensors.class);
         Call<SensorList> call = requestSensors.getSensores(idcuartos);
         call.enqueue(new Callback<SensorList>() {
             @Override

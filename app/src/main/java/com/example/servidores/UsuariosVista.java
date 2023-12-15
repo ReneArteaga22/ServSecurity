@@ -5,8 +5,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.retrofitcuartos.models.Usuarios;
-import com.example.retrofitcuartos.request.ApiInterface;
+import com.example.servidores.models.Usuarios;
+import com.example.servidores.request.ApiInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;
