@@ -11,7 +11,7 @@ import retrofit2.http.Path;
 
 public interface RequestSensors {
     @GET("Adafruit/recibirdatos/{idcuarto}")
-    Call<SensorList> getSensores(@Path("idcuarto")String idcuarto);
+    Call<List<Sensores>> getSensores(@Path("idcuarto")String idcuarto);
     @GET("Adafruit/alarma")
     Call<List<Sensores>> apagarAlarma();
     @GET("Adafruit/leds")

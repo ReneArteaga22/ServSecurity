@@ -3,8 +3,11 @@ package com.example.servidores.repository;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.servidores.models.SensorList;
+import com.example.servidores.models.Sensores;
 import com.example.servidores.request.RequestSensors;
 import com.example.servidores.retrofit.RetrofitClient;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,20 +19,21 @@ public class SensorsRepository {
     void setRetrofit() {
         retrofit = RetrofitClient.getInstance();
     }
-    public MutableLiveData<SensorList> getSensors(String idcuarto) {
+    public MutableLiveData<List<Sensores>> getSensors(String idcuarto) {
         setRetrofit();
         RequestSensors sensorsreq = retrofit.create(RequestSensors.class);
-        Call<SensorList> sensCall = sensorsreq.getSensores(idcuarto);
-        MutableLiveData<SensorList> mutableLiveData = new MutableLiveData<>();
+        Call<List<Sensores>> sensCall = sensorsreq.getSensores(idcuarto);
+        MutableLiveData<List<Sensores>> mutableLiveData = new MutableLiveData<>();
 
-        sensCall.enqueue(new Callback<SensorList>() {
+        sensCall.enqueue(new Callback<List<Sensores>>() {
             @Override
-            public void onResponse(Call<SensorList> call, Response<SensorList> response) {
-                SensorList sensorList;
+            public void onResponse(Call<List<Sensores>> call, Response<List<Sensores>> response) {
+                List<Sensores> senss = response.body();
+                mutableLiveData.setValue(senss);
             }
 
             @Override
-            public void onFailure(Call<SensorList> call, Throwable t) {
+            public void onFailure(Call<List<Sensores>> call, Throwable t) {
 
             }
         });

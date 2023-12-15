@@ -6,12 +6,15 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.servidores.models.SensorList;
+import com.example.servidores.models.Sensores;
 import com.example.servidores.repository.SensorsRepository;
 
+import java.util.List;
+
 public class SensorsViewModel extends ViewModel {
-    private MutableLiveData<SensorList> sensores;
+    private MutableLiveData<List<Sensores>> sensores;
     private SensorsRepository sensorsRepository;
-    public LiveData<SensorList> getSensores (String id) {
+    public LiveData<List<Sensores>> getSensores (String id) {
         if (sensores == null) {
             sensores = new MutableLiveData<>();
             loadSensors(id);
@@ -23,10 +26,10 @@ public class SensorsViewModel extends ViewModel {
         if (sensorsRepository == null) {
             sensorsRepository = new SensorsRepository();
         }
-        LiveData<SensorList> repositoryLiveData = sensorsRepository.getSensors(id);
-        repositoryLiveData.observeForever(new Observer<SensorList>() {
+        LiveData<List<Sensores>> repositoryLiveData = sensorsRepository.getSensors(id);
+        repositoryLiveData.observeForever(new Observer<List<Sensores>>() {
             @Override
-            public void onChanged(SensorList sensList) {
+            public void onChanged(List<Sensores> sensList) {
                 sensores.setValue(sensList);
             }
         });
