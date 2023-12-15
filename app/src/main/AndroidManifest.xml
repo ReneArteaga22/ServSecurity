@@ -33,9 +33,11 @@
             android:name=".ui.register.RegisterActivity"
             android:exported="false"
             android:label="RegisterActivity" />
+        <activity android:name=".UsuariosVista" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

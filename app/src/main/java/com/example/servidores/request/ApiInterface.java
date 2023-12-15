@@ -13,5 +13,5 @@ public interface ApiInterface {
     @GET("auth/recibir-datos")
     Call<List<Cuartos>> getCuartos(@Header("Authorization") String authorizationHeader);
     @GET("auth/profile")
-    Call<Usuarios> obtenerUsuario();
+    Call<Usuarios> obtenerUsuario(@Header("Authorization") String authorizationHeader);
 }

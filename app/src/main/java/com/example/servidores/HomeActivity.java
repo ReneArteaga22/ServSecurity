@@ -2,8 +2,11 @@ package com.example.servidores;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -13,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.servidores.adapters.CuartosAdapter;
 
+import com.example.servidores.data.model.TokenGet;
 import com.example.servidores.models.Cuartos;
 import com.example.servidores.request.ApiInterface;
 import com.example.servidores.retrofit.RetrofitClient;
@@ -29,11 +33,16 @@ public class HomeActivity extends AppCompatActivity {
     ProgressBar pb;
     LinearLayoutManager llm;
     CuartosAdapter Ca;
+    String token;
     List<Cuartos> cuartosList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeactivity);
+
+
+        token = TokenGet.getTokenFromSharedPreferences(this);
+        Log.d("Token Value", "Token: " + token);
         rc = findViewById(R.id.recyclerView);
         pb = findViewById(R.id.progressBar);
         llm = new LinearLayoutManager(this);
@@ -44,11 +53,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void fetchCuartos() {
-        String key = " Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vNTQuMTYxLjUxLjU0L2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNzAyNjA1ODAyLCJleHAiOjE3MDI2MDk0MDIsIm5iZiI6MTcwMjYwNTgwMiwianRpIjoiVjFySEthVEM5bzdOMTBnaSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.oxvYL0YFZMcyi9qBp0wCPRBrI7dEDNsKaBwCRZQNua0";
-        pb.setVisibility(View.VISIBLE);
+       pb.setVisibility(View.VISIBLE);
 
         ApiInterface apiInterface = RetrofitClient.getInstance().create(ApiInterface.class);
-        Call<List<Cuartos>> call = apiInterface.getCuartos(key);
+        Call<List<Cuartos>> call = apiInterface.getCuartos("Bearer "+token);
         call.enqueue(new Callback<List<Cuartos>>() {
             @Override
             public void onResponse(Call<List<Cuartos>> call, Response<List<Cuartos>> response) {
@@ -69,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-    public void ayuda()
+    public void ayuda(View v)
     {
         new Handler().postDelayed(new Runnable() {
             @Override

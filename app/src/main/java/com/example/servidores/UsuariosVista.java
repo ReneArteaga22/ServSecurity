@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.servidores.data.model.TokenGet;
 import com.example.servidores.models.Usuarios;
 import com.example.servidores.request.ApiInterface;
 
@@ -18,21 +19,23 @@ public class UsuariosVista extends AppCompatActivity {
     TextView textViewDatosUsuario ;
     TextView  textViewDatosApellido ;
     TextView textViewDatosCorreo ;
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuarios_vista);
+        token = TokenGet.getTokenFromSharedPreferences(this);
         textViewDatosUsuario = findViewById(R.id.datosusuario);
         textViewDatosApellido = findViewById(R.id.datosapellido);
         textViewDatosCorreo = findViewById(R.id.datoscorreo);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://54.161.51.54:80/api")
+                .baseUrl("http://54.161.51.54:80/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         ApiInterface user = retrofit.create(ApiInterface.class);
-        Call<Usuarios> call = user.obtenerUsuario();
+        Call<Usuarios> call = user.obtenerUsuario("Bearer "+token);
         ayuda(call);  // Pasa la llamada como parámetro al método ayuda
     }
 
