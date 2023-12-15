@@ -80,5 +80,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         }, 500); // 5000 milisegundos (5 segundos)
     }
+    public void agregar(View view) {
+        Intent intent = new Intent(this, crearcuarto.class);
+        startActivity(intent);
+    }
 }
 

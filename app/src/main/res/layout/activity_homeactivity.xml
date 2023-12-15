@@ -26,12 +26,26 @@
         android:background="?attr/colorOnPrimaryContainer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/boton"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        app:layout_constraintBottom_toTopOf="@id/agregar"
         android:text="Cuartos"
         android:gravity="center"
         android:textColor="?attr/colorTertiaryContainer"
         android:textSize="24sp">
     </TextView>
+    <Button
+        android:id="@+id/agregar"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/topbarra"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/md_theme_dark_background"
+        android:layout_marginTop="10dp"
+        android:text="Agregar Cuarto"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:onClick="agregar"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -40,7 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topbarra" />
+        app:layout_constraintTop_toBottomOf="@+id/agregar" />
 
     <ProgressBar
         android:id="@+id/progressBar"
