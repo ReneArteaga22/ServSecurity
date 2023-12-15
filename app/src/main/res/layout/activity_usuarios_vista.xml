@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/foto"
         android:layout_width="0dp"
-        android:layout_height="125dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/top"
         android:background="@drawable/user"
@@ -18,7 +18,7 @@
     <TextView
         android:id="@+id/top"
         android:layout_width="275dp"
-        android:layout_height="125dp"
+        android:layout_height="100dp"
         android:text="Usuario"
         android:textColor="#D5E3FF"
         android:gravity="center"

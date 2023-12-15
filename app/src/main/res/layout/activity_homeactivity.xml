@@ -6,23 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
     >
+
     <Button
         android:id="@+id/boton"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:background="@color/black"
         android:onClick="ayuda"
-        android:layout_width="50dp"
-        android:layout_height="75dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/topbarra"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Usuario"
-        android:textSize="16sp"
-        android:background="@color/black">
+        >
 
     </Button>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toStartOf="@id/boton"
+        app:layout_constraintTop_toTopOf="@id/boton"
+        app:layout_constraintEnd_toEndOf="@id/boton"
+        app:layout_constraintBottom_toBottomOf="@id/boton"
+        android:background="@drawable/img"
+        />
+
     <TextView
         android:id="@+id/topbarra"
-        android:layout_width="360dp"
-        android:layout_height="75dp"
+        android:layout_width="370dp"
+        android:layout_height="60dp"
         android:background="?attr/colorOnPrimaryContainer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/boton"
@@ -30,8 +42,9 @@
         android:text="Cuartos"
         android:gravity="center"
         android:textColor="?attr/colorTertiaryContainer"
-        android:textSize="24sp">
+        android:textSize="28sp">
     </TextView>
+
     <Button
         android:id="@+id/agregar"
         android:layout_width="200dp"
@@ -39,13 +52,26 @@
         app:layout_constraintTop_toBottomOf="@+id/topbarra"
         app:layout_constraintBottom_toTopOf="@id/recyclerView"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/md_theme_dark_background"
-        android:layout_marginTop="10dp"
-        android:text="Agregar Cuarto"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="New Room"
+        android:textSize="22dp"
         android:onClick="agregar"
+        android:textAlignment="textEnd"
         />
+
+    <ImageView
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:background="@drawable/img_1"
+        app:layout_constraintTop_toTopOf="@id/agregar"
+        app:layout_constraintStart_toStartOf="@id/agregar"
+        app:layout_constraintBottom_toBottomOf="@id/agregar"
+        android:layout_marginLeft="15dp"
+        />
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -54,7 +80,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agregar" />
+        app:layout_constraintTop_toBottomOf="@+id/agregar"
+        android:layout_marginTop="15dp"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
