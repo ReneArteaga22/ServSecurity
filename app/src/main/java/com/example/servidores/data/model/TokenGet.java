@@ -16,4 +16,11 @@ public class TokenGet {
         editor.putString("token", token);
         editor.apply();
     }
+    public static void removeTokenFromSharedPreferences(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove("token");
+        editor.apply();
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.example.servidores;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.servidores.data.model.TokenGet;
 import com.example.servidores.models.Usuarios;
 import com.example.servidores.request.ApiInterface;
+import com.example.servidores.ui.login.LoginActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,6 +23,7 @@ public class UsuariosVista extends AppCompatActivity {
     TextView  textViewDatosApellido ;
     TextView textViewDatosCorreo ;
     String token;
+    Retrofit retro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +33,12 @@ public class UsuariosVista extends AppCompatActivity {
         textViewDatosApellido = findViewById(R.id.datosapellido);
         textViewDatosCorreo = findViewById(R.id.datoscorreo);
 
-        Retrofit retrofit = new Retrofit.Builder()
+        retro = new Retrofit.Builder()
                 .baseUrl("http://54.161.51.54:80/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        ApiInterface user = retrofit.create(ApiInterface.class);
+        ApiInterface user = retro.create(ApiInterface.class);
         Call<Usuarios> call = user.obtenerUsuario("Bearer "+token);
         ayuda(call);  // Pasa la llamada como parámetro al método ayuda
     }
@@ -60,5 +64,16 @@ public class UsuariosVista extends AppCompatActivity {
                 // Maneja el error de la llamada
             }
         });
+    }
+    public void Loggout(View v)
+    {
+        textViewDatosUsuario.setText("");
+        textViewDatosApellido.setText("");
+        textViewDatosCorreo.setText("");
+        TokenGet.removeTokenFromSharedPreferences(this);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 }

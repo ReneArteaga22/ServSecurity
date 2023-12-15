@@ -133,7 +133,6 @@ public class SensoresYAdaptadores extends AppCompatActivity {
                 if (ContextCompat.checkSelfPermission(SensoresYAdaptadores.this, Manifest.permission.VIBRATE) == PackageManager.PERMISSION_GRANTED) {
                     notificationManagerCompat.notify(notifID++, notification);
                 } else {
-                    // You might want to request the VIBRATE permission here
                     ActivityCompat.requestPermissions(SensoresYAdaptadores.this, new String[]{Manifest.permission.VIBRATE}, 1823);
                 }
             }
