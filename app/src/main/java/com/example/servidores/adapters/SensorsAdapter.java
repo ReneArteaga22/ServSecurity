@@ -71,7 +71,7 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
         }
 
         private void performGetRequest(String feedKey) {
-            RequestSensors requestSensors = RetrofitClient.getRetrofitClient().create(RequestSensors.class);
+            RequestSensors requestSensors = RetrofitClient.getInstance().create(RequestSensors.class);
             if("acceso".equals(feedKey)){
                 Call<List<Sensores>> accesoCall = requestSensors.abrirPuerta();
             }
@@ -82,7 +82,6 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
                 Call<List<Sensores>> ledsCall = requestSensors.modificarluces();
             }
         }
-
         public void setData(Sensores sen) {
             if("normal".equals(sen.getTipo())){
                 nam.setText(sen.getFeed_key());

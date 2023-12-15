@@ -2,9 +2,9 @@ package com.example.servidores.repository;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.retrofitcuartos.models.SensorList;
-import com.example.retrofitcuartos.request.RequestSensors;
-import com.example.retrofitcuartos.retrofit.RetrofitClient;
+import com.example.servidores.models.SensorList;
+import com.example.servidores.request.RequestSensors;
+import com.example.servidores.retrofit.RetrofitClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,7 +14,7 @@ import retrofit2.Retrofit;
 public class SensorsRepository {
     public Retrofit retrofit;
     void setRetrofit() {
-        retrofit = RetrofitClient.getRetrofitClient();
+        retrofit = RetrofitClient.getInstance();
     }
     public MutableLiveData<SensorList> getSensors(String idcuarto) {
         setRetrofit();
