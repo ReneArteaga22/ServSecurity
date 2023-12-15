@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UsuariosVista">
+
+    <ImageView
+        android:id="@+id/foto"
+        android:layout_width="0dp"
+        android:layout_height="125dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/top"
+        android:background="@drawable/user"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/top"
+        android:layout_width="275dp"
+        android:layout_height="125dp"
+        android:text="Usuario"
+        android:textColor="#D5E3FF"
+        android:gravity="center"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/foto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@color/md_theme_light_onPrimaryContainer"
+        />
+
+    <TextView
+        android:id="@+id/Usuario"
+        android:layout_width="150dp"
+        android:background="@drawable/rounded_corner"
+        android:textColor="@color/white"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:text="USUARIO"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/datosusuario"
+        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top" />
+
+    <TextView
+        android:id="@+id/datosusuario"
+        android:layout_width="200dp"
+        android:background="@drawable/data_users"
+        android:textColor="@color/black"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toEndOf="@id/Usuario"
+        app:layout_constraintTop_toBottomOf="@id/top" />
+
+    <TextView
+        android:id="@+id/Apellido"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_corner"
+        android:textColor="@color/white"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:text="APELLIDO"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/datosapellido"
+        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Usuario" />
+
+    <TextView
+        android:id="@+id/datosapellido"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@drawable/data_users"
+        android:textColor="@color/black"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toEndOf="@id/Apellido"
+        app:layout_constraintTop_toBottomOf="@id/datosusuario" />
+
+    <TextView
+        android:id="@+id/Correo"
+        android:background="@drawable/rounded_corner"
+        android:textColor="@color/white"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:text="CORREO"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/datoscorreo"
+        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Apellido" />
+
+    <TextView
+        android:id="@+id/datoscorreo"
+        android:layout_width="200dp"
+        android:background="@drawable/data_users"
+        android:textColor="@color/black"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toEndOf="@id/Correo"
+        app:layout_constraintTop_toBottomOf="@id/datosapellido" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
