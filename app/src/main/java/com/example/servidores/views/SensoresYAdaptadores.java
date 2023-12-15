@@ -86,12 +86,12 @@ public class SensoresYAdaptadores extends AppCompatActivity {
                     sns.notifyDataSetChanged();
 
                     for (Sensores sensor:sensList) {
-                        if ("sonido".equals(sensor.getFeed_key()) && Float.parseFloat(sensor.getValue()) > 3120) {
+                        if ("sonido".equals(sensor.getFeed_key()) && Float.parseFloat(sensor.getValue()) > 570) {
                             if ("alarma".equals(sensor.getFeed_key()) && Float.parseFloat(sensor.getValue()) != 1) {
                                 sendSoundNotification();
                             }
                         }
-                        if ("polvo".equals(sensor.getFeed_key()) && Float.parseFloat(sensor.getValue()) > 0.8) {
+                        if ("polvo".equals(sensor.getFeed_key()) && Float.parseFloat(sensor.getValue()) > 0.1) {
                             sendDirtNotification();
                         }
                         if ("alarma".equals(sensor.getFeed_key()) && Float.parseFloat(sensor.getValue()) == 1) {

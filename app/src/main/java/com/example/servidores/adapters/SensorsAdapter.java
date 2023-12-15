@@ -75,6 +75,7 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
                     switchChangeListener.onSwitchChanged(sen.getFeed_key(), isChecked);
 
                     if(isChecked){
+                        sw.setEnabled(false);
                         performGetRequest(sen.getFeed_key());
                     }
                 }
@@ -97,11 +98,12 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
                     @Override
                     public void onResponse(Call<List<Sensores>> call, Response<List<Sensores>> response) {
                         List<Sensores> sensoresList = response.body();
+                        sw.setEnabled(true);
                     }
 
                     @Override
                     public void onFailure(Call<List<Sensores>> call, Throwable t) {
-                        // Maneja el fallo de la llamada si es necesario
+                        sw.setEnabled(true);
                     }
                 });
             }
@@ -116,7 +118,7 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
                     sw.setClickable(false);
                     sw.setFocusable(false);
                     sw.setFocusableInTouchMode(false);
-                    if(Float.parseFloat(sen.getValue())>30){
+                    if(Float.parseFloat(sen.getValue())>23){
                         sw.setChecked(true);
                     }
                     else {
