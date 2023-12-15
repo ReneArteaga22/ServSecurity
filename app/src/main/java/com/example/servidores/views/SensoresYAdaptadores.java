@@ -23,6 +23,7 @@ import com.example.servidores.adapters.SensorsAdapter;
 import com.example.servidores.models.SensorList;
 import com.example.servidores.models.Sensores;
 import com.example.servidores.request.RequestSensors;
+import com.example.servidores.request.SwitchChangeListener;
 import com.example.servidores.retrofit.RetrofitClient;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -37,6 +38,7 @@ public class SensoresYAdaptadores extends AppCompatActivity {
     RecyclerView rcv;
     List<Sensores> sensList = new ArrayList<>();
     SensorsAdapter sns;
+    SwitchChangeListener switchChangeListener;
     String idcuarto;
     String Title;
     String text;
@@ -51,7 +53,7 @@ public class SensoresYAdaptadores extends AppCompatActivity {
         Intent info = getIntent();
         idcuarto = info.getStringExtra("id");
         rcv = findViewById(R.id.sensorsitem);
-        sns = new SensorsAdapter(sensList);
+        sns = new SensorsAdapter(sensList,switchChangeListener);
         rcv.setLayoutManager(new LinearLayoutManager(this));
         rcv.setAdapter(sns);
         rcv.setHasFixedSize(true);

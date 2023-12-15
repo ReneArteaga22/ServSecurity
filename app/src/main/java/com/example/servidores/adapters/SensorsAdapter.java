@@ -18,12 +18,15 @@ import com.example.servidores.retrofit.RetrofitClient;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.SensorsHolder> {
     private List<Sensores> listsen;
     private SwitchChangeListener switchChangeListener;
-    public SensorsAdapter(List<Sensores> listsen) {
+    public SensorsAdapter(List<Sensores> listsen, SwitchChangeListener switchChangeListener) {
         this.listsen = listsen;
+        this.switchChangeListener = switchChangeListener;
     }
     public void setSensorDataList(List<Sensores> sensList) {
         this.listsen = sensList;
@@ -34,7 +37,7 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
     public SensorsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater lyf = LayoutInflater.from(parent.getContext());
         View v = lyf.inflate(R.layout.activity_sensor_items,parent,false);
-        return new SensorsHolder(v, switchChangeListener);
+        return new SensorsHolder(v);
     }
 
     @Override
@@ -54,12 +57,17 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
         TextView dat;
         Switch sw;
         SwitchChangeListener switchChangeListener;
-        public SensorsHolder(@NonNull View itemView, SwitchChangeListener switchChangeListener) {
+        public SensorsHolder(@NonNull View itemView) {
             super(itemView);
             nam = itemView.findViewById(R.id.sensor);
             dat = itemView.findViewById(R.id.data);
             sw = itemView.findViewById(R.id.actor);
-            this.switchChangeListener = switchChangeListener;
+            switchChangeListener = new SwitchChangeListener() {
+                @Override
+                public void onSwitchChanged(String feed_key, boolean isChecked) {
+
+                }
+            };
             sw.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
@@ -75,14 +83,27 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
 
         private void performGetRequest(String feedKey) {
             RequestSensors requestSensors = RetrofitClient.getInstance().create(RequestSensors.class);
-            if("acceso".equals(feedKey)){
-                Call<List<Sensores>> accesoCall = requestSensors.abrirPuerta();
+            Call<List<Sensores>> call = null;
+
+            if ("acceso".equals(feedKey)) {
+                call = requestSensors.abrirPuerta();
+            } else if ("alarma".equals(feedKey)) {
+                call = requestSensors.apagarAlarma();
+            } else if ("leds".equals(feedKey)) {
+                call = requestSensors.modificarluces();
             }
-            else if("alarma".equals(feedKey)){
-                Call<List<Sensores>> alarmaCall = requestSensors.apagarAlarma();
-            }
-            else if("leds".equals(feedKey)){
-                Call<List<Sensores>> ledsCall = requestSensors.modificarluces();
+            if (call != null) {
+                call.enqueue(new Callback<List<Sensores>>() {
+                    @Override
+                    public void onResponse(Call<List<Sensores>> call, Response<List<Sensores>> response) {
+                        List<Sensores> sensoresList = response.body();
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Sensores>> call, Throwable t) {
+                        // Maneja el fallo de la llamada si es necesario
+                    }
+                });
             }
         }
         public void setData(Sensores sen) {
