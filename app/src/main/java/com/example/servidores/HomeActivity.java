@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.servidores.CrearCuarto.CrearcuartoActivity;
 import com.example.servidores.adapters.CuartosAdapter;
 
 import com.example.servidores.data.model.TokenGet;
@@ -56,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
        pb.setVisibility(View.VISIBLE);
 
         ApiInterface apiInterface = RetrofitClient.getInstance().create(ApiInterface.class);
+        Log.d("Token Value Dentro", "Tokendent: " + token);
         Call<List<Cuartos>> call = apiInterface.getCuartos("Bearer "+token);
         call.enqueue(new Callback<List<Cuartos>>() {
             @Override
@@ -89,7 +91,7 @@ public class HomeActivity extends AppCompatActivity {
         }, 500); // 5000 milisegundos (5 segundos)
     }
     public void agregar(View view) {
-        Intent intent = new Intent(this, crearcuarto.class);
+        Intent intent = new Intent(this, CrearcuartoActivity.class);
         startActivity(intent);
     }
 }

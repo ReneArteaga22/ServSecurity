@@ -11,7 +11,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface CrearCuartoRequest {
-    @POST("/api/auth/regcuarto")
+    @POST("auth/regcuarto")
     Call<CrearCuartoResponse> createcuarto(
             @Header("Authorization") String authorizationHeader,
             @Body CrearCuartoUser crearCuartoUser

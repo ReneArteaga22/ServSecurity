@@ -49,17 +49,17 @@
         android:id="@+id/agregar"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/topbarra"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/md_theme_dark_background"
         android:layout_marginTop="15dp"
-        android:text="New Room"
-        android:textSize="22dp"
+        android:background="@color/md_theme_dark_background"
         android:onClick="agregar"
+        android:text="New Room"
         android:textAlignment="textEnd"
-        />
+        android:textSize="22dp"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topbarra" />
 
     <ImageView
         android:layout_width="33dp"
