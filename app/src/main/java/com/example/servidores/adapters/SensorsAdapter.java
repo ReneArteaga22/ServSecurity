@@ -25,6 +25,9 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
     public SensorsAdapter(List<Sensores> listsen) {
         this.listsen = listsen;
     }
+    public void setSensorDataList(List<Sensores> sensList) {
+        this.listsen = sensList;
+    }
 
     @NonNull
     @Override
@@ -85,34 +88,22 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
         public void setData(Sensores sen) {
             if("normal".equals(sen.getTipo())){
                 nam.setText(sen.getFeed_key());
+                sw.setVisibility(View.GONE);
                 if("temperatura".equals(sen.getFeed_key())){
+                    sw.setVisibility(View.VISIBLE);
                     sw.setText("Ventilacion");
                     sw.setClickable(false);
                     sw.setFocusable(false);
                     sw.setFocusableInTouchMode(false);
-                    if(Integer.parseInt(sen.getValue())>30){
+                    if(Float.parseFloat(sen.getValue())>30){
                         sw.setChecked(true);
                     }
                     else {
-                        sw.setChecked(false);
-                    }
-                }
-                else if("acceso".equals(sen.getFeed_key())){
-                    sw.setText("Puerta");
-                    if("1".equals(sen.getValue())){
-                        sw.setClickable(false);
-                        sw.setFocusable(false);
-                        sw.setFocusableInTouchMode(false);
-                        sw.setChecked(true);
-                    }
-                    else {
-                        sw.setClickable(true);
-                        sw.setFocusable(true);
-                        sw.setFocusableInTouchMode(true);
                         sw.setChecked(false);
                     }
                 }
                 else if("humo".equals(sen.getFeed_key())){
+                    sw.setVisibility(View.VISIBLE);
                     sw.setText("Alarma");
                     if("Alarma".equals(sen.getFeed_key()) && "1".equals(sen.getValue())){
                         sw.setClickable(true);
@@ -128,15 +119,36 @@ public class SensorsAdapter  extends RecyclerView.Adapter<SensorsAdapter.Sensors
                     }
                 }
             }
-            else if("leds".equals(sen.getFeed_key())){
-                sw.setText("Luz");
+            else if("actuador".equals(sen.getTipo())){
+                if("acceso".equals(sen.getFeed_key())){
+                    nam.setText(sen.getFeed_key());
+                    sw.setText("Puerta");
+                    sw.setVisibility(View.VISIBLE);
+                    if("1".equals(sen.getValue())){
+                        sw.setClickable(false);
+                        sw.setFocusable(false);
+                        sw.setFocusableInTouchMode(false);
+                        sw.setChecked(true);
+                    }
+                    else {
+                        sw.setClickable(true);
+                        sw.setFocusable(true);
+                        sw.setFocusableInTouchMode(true);
+                        sw.setChecked(false);
+                    }
+                }
+                else if("leds".equals(sen.getFeed_key())){
+                    sw.setText("Luz");
+                    nam.setVisibility(View.GONE);
+                    dat.setVisibility(View.GONE);
+                }
+            }
+            else {
+                sw.setVisibility(View.GONE);
                 nam.setVisibility(View.GONE);
                 dat.setVisibility(View.GONE);
             }
-            else{
-                sw.setVisibility(View.GONE);
-            }
-            dat.setText(String.valueOf(sen.getValue()));
+            dat.setText(String.format("%.2f",Float.parseFloat(sen.getValue())));
 
         }
     }
