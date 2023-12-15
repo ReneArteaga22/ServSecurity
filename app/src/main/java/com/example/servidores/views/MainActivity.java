@@ -7,16 +7,18 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.servidores.request.RequestSensors;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.retrofitcuartos.R;
-import com.example.retrofitcuartos.UsuariosVista;
-import com.example.retrofitcuartos.adapters.CuartosAdapter;
-import com.example.retrofitcuartos.models.Cuartos;
-import com.example.retrofitcuartos.request.ApiInterface;
-import com.example.retrofitcuartos.retrofit.RetrofitClient;
+import com.example.servidores.R;
+import com.example.servidores.UsuariosVista;
+import com.example.servidores.adapters.CuartosAdapter;
+import com.example.servidores.models.Cuartos;
+import com.example.servidores.request.ApiInterface;
+import com.example.servidores.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;

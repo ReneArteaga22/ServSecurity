@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
-import com.example.retrofitcuartos.models.SensorList;
-import com.example.retrofitcuartos.repository.SensorsRepository;
+import com.example.servidores.models.SensorList;
+import com.example.servidores.repository.SensorsRepository;
 
 public class SensorsViewModel extends ViewModel {
     private MutableLiveData<SensorList> sensores;

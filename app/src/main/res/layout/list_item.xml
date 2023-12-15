@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
+    >
+    <LinearLayout
+        android:id="@+id/cuarto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:gravity="center"
+        android:background="@drawable/rounded_corner"
+        >
+        <TextView
+            android:id="@+id/tvID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:text="ID"
+            android:textColor="?attr/colorTertiaryContainer"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <View
+            android:layout_height="match_parent"
+            android:layout_width="50dp"/>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:text="Title"
+            android:textColor="?attr/colorTertiaryContainer"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <View
+            android:layout_height="match_parent"
+            android:layout_width="50dp"/>
+        <TextView
+            android:id="@+id/tvBody"
+
+            android:textColor="?attr/colorTertiaryContainer"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Body text"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

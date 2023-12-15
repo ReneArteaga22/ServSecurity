@@ -9,11 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.retrofitcuartos.R;
-import com.example.retrofitcuartos.models.Sensores;
-import com.example.retrofitcuartos.request.RequestSensors;
-import com.example.retrofitcuartos.request.SwitchChangeListener;
-import com.example.retrofitcuartos.retrofit.RetrofitClient;
+import com.example.servidores.R;
+import com.example.servidores.models.Sensores;
+import com.example.servidores.request.RequestSensors;
+import com.example.servidores.request.SwitchChangeListener;
+import com.example.servidores.retrofit.RetrofitClient;
 
 import java.util.List;
 

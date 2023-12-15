@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.retrofitcuartos.R;
-import com.example.retrofitcuartos.models.Cuartos;
-import com.example.retrofitcuartos.views.SensoresYAdaptadores;
+import com.example.servidores.R;
+import com.example.servidores.models.Cuartos;
+import com.example.servidores.views.SensoresYAdaptadores;
 
 import java.util.List;
 
