@@ -16,7 +16,7 @@ public class RetrofitClient {
         if (retrofit==null)
         {
             retrofit=new Retrofit.Builder()
-                    .baseUrl("http://54.161.51.54:80/")
+                    .baseUrl("http://54.161.51.54:80/Api")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             Log.d(TAG, "Retrofit instance created");

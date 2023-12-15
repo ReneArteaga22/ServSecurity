@@ -1,7 +1,7 @@
 package com.example.servidores.request;
 
-import com.example.retrofitcuartos.models.SensorList;
-import com.example.retrofitcuartos.models.Sensores;
+import com.example.servidores.models.SensorList;
+import com.example.servidores.models.Sensores;
 
 import java.util.List;
 

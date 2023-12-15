@@ -1,7 +1,7 @@
 package com.example.servidores.request;
 
-import com.example.retrofitcuartos.models.Cuartos;
-import com.example.retrofitcuartos.models.Usuarios;
+import com.example.servidores.models.Cuartos;
+import com.example.servidores.models.Usuarios;
 
 import java.util.List;
 
